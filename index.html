@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="fr" class="light" dir="ltr">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,6 +36,10 @@
 
       body.dark {
         @apply bg-slate-900 text-slate-100;
+      }
+
+      body.rtl {
+        direction: rtl;
       }
 
       h1,
@@ -89,14 +94,32 @@
         background-clip: text;
         color: transparent;
       }
+
+      .lang-switcher {
+        @apply relative inline-block text-left;
+      }
+
+      .lang-menu {
+        @apply origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white dark:bg-slate-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-50;
+      }
+
+      .lang-item {
+        @apply block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700;
+      }
+
+      .lang-item.active {
+        @apply bg-primary/10 text-primary dark:bg-primary/20;
+      }
     </style>
   </head>
+
   <body>
+
     <!-- Navigation -->
     <nav
-      class="fixed w-full z-50 bg-black dark:bg-slate-900/80 backdrop-blur-md shadow-sm"
+      class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm"
     >
-      <div class="max-w-7xl mx-auto px-6 text-white">
+      <div class="max-w-7xl mx-auto px-6">
         <div class="flex justify-between items-center h-20">
           <a href="#" class="flex items-center space-x-2">
             <div
@@ -110,16 +133,48 @@
           </a>
 
           <div class="hidden md:flex items-center space-x-8">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#services" class="nav-link">Services</a>
-            <a href="#about" class="nav-link">About</a>
-            <a href="#team" class="nav-link">Team</a>
-            <a href="#testimonials" class="nav-link">Testimonials</a>
-            <a href="#contact" class="nav-link">Contact</a>
+            <a href="#home" class="nav-link" data-i18n="nav.home">Home</a>
+            <a href="#services" class="nav-link" data-i18n="nav.services"
+              >Services</a
+            >
+            <a href="#about" class="nav-link" data-i18n="nav.about">About</a>
+            <a href="#team" class="nav-link" data-i18n="nav.team">Team</a>
+            <a
+              href="#testimonials"
+              class="nav-link"
+              data-i18n="nav.testimonials"
+              >Testimonials</a
+            >
+            <a href="#contact" class="nav-link" data-i18n="nav.contact"
+              >Contact</a
+            >
 
             <div class="flex items-center space-x-4">
+              <div class="lang-switcher">
+                <button
+                  type="button"
+                  class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+                  id="lang-menu-button"
+                >
+                  <span id="current-lang">EN</span>
+                  <i class="fas fa-chevron-down ml-2"></i>
+                </button>
+
+                <div class="lang-menu hidden" id="lang-menu">
+                  <div class="py-1">
+                    <a href="#" class="lang-item active" data-lang="en"
+                      >English</a
+                    >
+                    <a href="#" class="lang-item" data-lang="fr">Français</a>
+                    <a href="#" class="lang-item" data-lang="ar">العربية</a>
+                  </div>
+                </div>
+              </div>
+
               <div class="theme-toggle" id="themeToggle"></div>
-              <a href="#contact" class="btn-primary">Get Started</a>
+              <a href="#contact" class="btn-primary" data-i18n="nav.get_started"
+                >Get Started</a
+              >
             </div>
           </div>
 
@@ -132,22 +187,55 @@
         </div>
       </div>
 
-      <!-- Mobile Menu -->
       <div
-        class="md:hidden hidden bg-white dark:bg-slate-800 shadow-lg transition-all duration-300"
+        class="md:hidden hidden bg-white dark:bg-slate-800 shadow-lg"
         id="mobileMenu"
       >
-        <div class="px-6 py-4 space-y-4 transition-all duration-300">
-          <a href="#home" class="block nav-link">Home</a>
-          <a href="#services" class="block nav-link">Services</a>
-          <a href="#about" class="block nav-link">About</a>
-          <a href="#team" class="block nav-link">Team</a>
-          <a href="#testimonials" class="block nav-link">Testimonials</a>
-          <a href="#contact" class="block nav-link">Contact</a>
+        <div class="px-6 py-4 space-y-4">
+          <a href="#home" class="block nav-link" data-i18n="nav.home">Home</a>
+          <a href="#services" class="block nav-link" data-i18n="nav.services"
+            >Services</a
+          >
+          <a href="#about" class="block nav-link" data-i18n="nav.about"
+            >About</a
+          >
+          <a href="#team" class="block nav-link" data-i18n="nav.team">Team</a>
+          <a
+            href="#testimonials"
+            class="block nav-link"
+            data-i18n="nav.testimonials"
+            >Testimonials</a
+          >
+          <a href="#contact" class="block nav-link" data-i18n="nav.contact"
+            >Contact</a
+          >
 
           <div class="flex items-center justify-between pt-4">
+            <div class="lang-switcher">
+              <button
+                type="button"
+                class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+                id="mobile-lang-menu-button"
+              >
+                <span id="mobile-current-lang">EN</span>
+                <i class="fas fa-chevron-down ml-2"></i>
+              </button>
+
+              <div class="lang-menu hidden" id="mobile-lang-menu">
+                <div class="py-1">
+                  <a href="#" class="lang-item active" data-lang="en"
+                    >English</a
+                  >
+                  <a href="#" class="lang-item" data-lang="fr">Français</a>
+                  <a href="#" class="lang-item" data-lang="ar">العربية</a>
+                </div>
+              </div>
+            </div>
+
             <div class="theme-toggle" id="mobileThemeToggle"></div>
-            <a href="#contact" class="btn-primary">Get Started</a>
+            <a href="#contact" class="btn-primary" data-i18n="nav.get_started"
+              >Get Started</a
+            >
           </div>
         </div>
       </div>
@@ -159,10 +247,16 @@
         <div class="flex flex-col lg:flex-row items-center">
           <div class="lg:w-1/2 mb-12 lg:mb-0">
             <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
-              Modern <span class="gradient-text">Accounting</span> Solutions for
-              Your Business
+              <span data-i18n="hero.title1">Modern</span>
+              <span class="gradient-text" data-i18n="hero.title2"
+                >Accounting</span
+              >
+              <span data-i18n="hero.title3">Solutions for Your Business</span>
             </h1>
-            <p class="text-xl text-slate-600 dark:text-slate-300 mb-8">
+            <p
+              class="text-xl text-slate-600 dark:text-slate-300 mb-8"
+              data-i18n="hero.subtitle"
+            >
               We provide comprehensive financial services with a personal touch,
               helping businesses thrive in today's competitive landscape.
             </p>
@@ -170,10 +264,12 @@
               class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
             >
               <a href="#contact" class="btn-primary">
-                Get Started <i class="fas fa-arrow-right ml-2"></i>
+                <span data-i18n="hero.cta1">Get Started</span>
+                <i class="fas fa-arrow-right ml-2"></i>
               </a>
               <a href="#services" class="btn-secondary">
-                Our Services <i class="fas fa-chart-line ml-2"></i>
+                <span data-i18n="hero.cta2">Our Services</span>
+                <i class="fas fa-chart-line ml-2"></i>
               </a>
             </div>
 
@@ -197,7 +293,7 @@
                   />
                 </div>
                 <div class="ml-4">
-                  <p class="text-sm font-medium">
+                  <p class="text-sm font-medium" data-i18n="hero.trusted">
                     Trusted by
                     <span class="text-primary font-bold">500+</span> clients
                   </p>
@@ -217,7 +313,10 @@
                 class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-lg"
               >
                 <div class="text-4xl font-bold text-primary">20+</div>
-                <div class="text-sm text-slate-500 dark:text-slate-400">
+                <div
+                  class="text-sm text-slate-500 dark:text-slate-400"
+                  data-i18n="hero.experience"
+                >
                   Years Experience
                 </div>
               </div>
@@ -230,7 +329,10 @@
     <!-- Clients Logo Section -->
     <section class="py-12 bg-slate-100 dark:bg-slate-800">
       <div class="max-w-7xl mx-auto px-6">
-        <p class="text-center text-slate-500 dark:text-slate-400 mb-8">
+        <p
+          class="text-center text-slate-500 dark:text-slate-400 mb-8"
+          data-i18n="clients.title"
+        >
           Trusted by leading companies
         </p>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
@@ -298,13 +400,15 @@
         <div class="text-center mb-16">
           <span
             class="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full"
+            data-i18n="services.subtitle"
             >Our Services</span
           >
-          <h2 class="text-4xl font-bold mt-4 mb-4">
+          <h2 class="text-4xl font-bold mt-4 mb-4" data-i18n="services.title">
             Comprehensive Financial Solutions
           </h2>
           <p
             class="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto"
+            data-i18n="services.description"
           >
             We offer a full range of accounting services to meet all your
             financial needs.
@@ -319,30 +423,39 @@
             >
               <i class="fas fa-calculator text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold mb-3">Accounting Services</h3>
-            <p class="text-slate-600 dark:text-slate-300 mb-4">
+            <h3 class="text-2xl font-bold mb-3" data-i18n="services.1.title">
+              Accounting Services
+            </h3>
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="services.1.description"
+            >
               Comprehensive bookkeeping and financial reporting to keep your
               business organized and compliant.
             </p>
             <ul class="space-y-2 mb-6">
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Monthly financial statements</span>
+                <span data-i18n="services.1.benefit1"
+                  >Monthly financial statements</span
+                >
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Payroll processing</span>
+                <span data-i18n="services.1.benefit2">Payroll processing</span>
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Accounts payable/receivable</span>
+                <span data-i18n="services.1.benefit3"
+                  >Accounts payable/receivable</span
+                >
               </li>
             </ul>
             <a
               href="#contact"
               class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
             >
-              Learn more
+              <span data-i18n="services.learn_more">Learn more</span>
               <i
                 class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
               ></i>
@@ -356,30 +469,41 @@
             >
               <i class="fas fa-file-invoice-dollar text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold mb-3">Tax Planning</h3>
-            <p class="text-slate-600 dark:text-slate-300 mb-4">
+            <h3 class="text-2xl font-bold mb-3" data-i18n="services.2.title">
+              Tax Planning
+            </h3>
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="services.2.description"
+            >
               Strategic tax solutions to minimize liabilities and maximize your
               returns.
             </p>
             <ul class="space-y-2 mb-6">
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Tax preparation & filing</span>
+                <span data-i18n="services.2.benefit1"
+                  >Tax preparation & filing</span
+                >
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Tax strategy development</span>
+                <span data-i18n="services.2.benefit2"
+                  >Tax strategy development</span
+                >
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Audit representation</span>
+                <span data-i18n="services.2.benefit3"
+                  >Audit representation</span
+                >
               </li>
             </ul>
             <a
               href="#contact"
               class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
             >
-              Learn more
+              <span data-i18n="services.learn_more">Learn more</span>
               <i
                 class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
               ></i>
@@ -393,30 +517,39 @@
             >
               <i class="fas fa-search-dollar text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold mb-3">Audit & Assurance</h3>
-            <p class="text-slate-600 dark:text-slate-300 mb-4">
+            <h3 class="text-2xl font-bold mb-3" data-i18n="services.3.title">
+              Audit & Assurance
+            </h3>
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="services.3.description"
+            >
               Independent financial audits to ensure accuracy, compliance, and
               investor confidence.
             </p>
             <ul class="space-y-2 mb-6">
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Financial statement audits</span>
+                <span data-i18n="services.3.benefit1"
+                  >Financial statement audits</span
+                >
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Internal control reviews</span>
+                <span data-i18n="services.3.benefit2"
+                  >Internal control reviews</span
+                >
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Compliance audits</span>
+                <span data-i18n="services.3.benefit3">Compliance audits</span>
               </li>
             </ul>
             <a
               href="#contact"
               class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
             >
-              Learn more
+              <span data-i18n="services.learn_more">Learn more</span>
               <i
                 class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
               ></i>
@@ -430,30 +563,39 @@
             >
               <i class="fas fa-chart-line text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold mb-3">Financial Consulting</h3>
-            <p class="text-slate-600 dark:text-slate-300 mb-4">
+            <h3 class="text-2xl font-bold mb-3" data-i18n="services.4.title">
+              Financial Consulting
+            </h3>
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="services.4.description"
+            >
               Expert advice to help you make informed financial decisions and
               grow your business.
             </p>
             <ul class="space-y-2 mb-6">
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Business valuation</span>
+                <span data-i18n="services.4.benefit1">Business valuation</span>
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Financial forecasting</span>
+                <span data-i18n="services.4.benefit2"
+                  >Financial forecasting</span
+                >
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Mergers & acquisitions</span>
+                <span data-i18n="services.4.benefit3"
+                  >Mergers & acquisitions</span
+                >
               </li>
             </ul>
             <a
               href="#contact"
               class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
             >
-              Learn more
+              <span data-i18n="services.learn_more">Learn more</span>
               <i
                 class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
               ></i>
@@ -467,30 +609,35 @@
             >
               <i class="fas fa-hand-holding-usd text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold mb-3">Wealth Management</h3>
-            <p class="text-slate-600 dark:text-slate-300 mb-4">
+            <h3 class="text-2xl font-bold mb-3" data-i18n="services.5.title">
+              Wealth Management
+            </h3>
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="services.5.description"
+            >
               Personalized strategies to grow and protect your personal and
               business wealth.
             </p>
             <ul class="space-y-2 mb-6">
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Investment planning</span>
+                <span data-i18n="services.5.benefit1">Investment planning</span>
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Retirement planning</span>
+                <span data-i18n="services.5.benefit2">Retirement planning</span>
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Estate planning</span>
+                <span data-i18n="services.5.benefit3">Estate planning</span>
               </li>
             </ul>
             <a
               href="#contact"
               class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
             >
-              Learn more
+              <span data-i18n="services.learn_more">Learn more</span>
               <i
                 class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
               ></i>
@@ -504,30 +651,35 @@
             >
               <i class="fas fa-lock text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold mb-3">Risk Management</h3>
-            <p class="text-slate-600 dark:text-slate-300 mb-4">
+            <h3 class="text-2xl font-bold mb-3" data-i18n="services.6.title">
+              Risk Management
+            </h3>
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="services.6.description"
+            >
               Identify and mitigate financial risks to protect your business
               assets.
             </p>
             <ul class="space-y-2 mb-6">
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Fraud prevention</span>
+                <span data-i18n="services.6.benefit1">Fraud prevention</span>
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Internal controls</span>
+                <span data-i18n="services.6.benefit2">Internal controls</span>
               </li>
               <li class="flex items-start">
                 <i class="fas fa-check text-primary mt-1 mr-2"></i>
-                <span>Insurance planning</span>
+                <span data-i18n="services.6.benefit3">Insurance planning</span>
               </li>
             </ul>
             <a
               href="#contact"
               class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
             >
-              Learn more
+              <span data-i18n="services.learn_more">Learn more</span>
               <i
                 class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
               ></i>
@@ -544,12 +696,16 @@
           <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
             <span
               class="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full"
+              data-i18n="about.subtitle"
               >About Us</span
             >
-            <h2 class="text-4xl font-bold mt-4 mb-6">
+            <h2 class="text-4xl font-bold mt-4 mb-6" data-i18n="about.title">
               Why Choose Our Accounting Firm
             </h2>
-            <p class="text-slate-600 dark:text-slate-300 mb-6">
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-6"
+              data-i18n="about.description"
+            >
               With over two decades of experience, we've helped hundreds of
               businesses navigate complex financial landscapes while maintaining
               the highest standards of professionalism and integrity.
@@ -565,8 +721,16 @@
                   </div>
                 </div>
                 <div class="ml-4">
-                  <h3 class="text-xl font-bold">Certified Professionals</h3>
-                  <p class="text-slate-600 dark:text-slate-300 mt-1">
+                  <h3
+                    class="text-xl font-bold"
+                    data-i18n="about.feature1.title"
+                  >
+                    Certified Professionals
+                  </h3>
+                  <p
+                    class="text-slate-600 dark:text-slate-300 mt-1"
+                    data-i18n="about.feature1.description"
+                  >
                     Our team holds top accounting certifications including CPA,
                     CMA, and CFA.
                   </p>
@@ -582,8 +746,16 @@
                   </div>
                 </div>
                 <div class="ml-4">
-                  <h3 class="text-xl font-bold">Personalized Service</h3>
-                  <p class="text-slate-600 dark:text-slate-300 mt-1">
+                  <h3
+                    class="text-xl font-bold"
+                    data-i18n="about.feature2.title"
+                  >
+                    Personalized Service
+                  </h3>
+                  <p
+                    class="text-slate-600 dark:text-slate-300 mt-1"
+                    data-i18n="about.feature2.description"
+                  >
                     We take time to understand your unique needs and provide
                     tailored solutions.
                   </p>
@@ -599,8 +771,16 @@
                   </div>
                 </div>
                 <div class="ml-4">
-                  <h3 class="text-xl font-bold">Data Security</h3>
-                  <p class="text-slate-600 dark:text-slate-300 mt-1">
+                  <h3
+                    class="text-xl font-bold"
+                    data-i18n="about.feature3.title"
+                  >
+                    Data Security
+                  </h3>
+                  <p
+                    class="text-slate-600 dark:text-slate-300 mt-1"
+                    data-i18n="about.feature3.description"
+                  >
                     Your financial data is protected with enterprise-grade
                     security measures.
                   </p>
@@ -620,7 +800,9 @@
                 class="absolute -bottom-6 -left-6 bg-white dark:bg-slate-700 p-6 rounded-xl shadow-lg"
               >
                 <div class="text-4xl font-bold text-primary">95%</div>
-                <div class="text-lg font-medium">Client Retention Rate</div>
+                <div class="text-lg font-medium" data-i18n="about.retention">
+                  Client Retention Rate
+                </div>
               </div>
             </div>
           </div>
@@ -629,24 +811,30 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="py-16 bg-primary">
+    <section class="py-16 bg-primary text-white">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-4 gap-8 text-center">
           <div class="p-6">
-            <div class="text-4xl font-bold mb-2 text-gray-900">500+</div>
-            <div class="text-lg">Satisfied Clients</div>
+            <div class="text-4xl font-bold mb-2">500+</div>
+            <div class="text-lg" data-i18n="stats.clients">
+              Satisfied Clients
+            </div>
           </div>
           <div class="p-6">
-            <div class="text-4xl font-bold mb-2 text-gray-900">20+</div>
-            <div class="text-lg">Years Experience</div>
+            <div class="text-4xl font-bold mb-2">20+</div>
+            <div class="text-lg" data-i18n="stats.experience">
+              Years Experience
+            </div>
           </div>
           <div class="p-6">
-            <div class="text-4xl font-bold mb-2 text-gray-900">50+</div>
-            <div class="text-lg">Professional Awards</div>
+            <div class="text-4xl font-bold mb-2">50+</div>
+            <div class="text-lg" data-i18n="stats.awards">
+              Professional Awards
+            </div>
           </div>
           <div class="p-6">
-            <div class="text-4xl font-bold mb-2 text-gray-900">24/7</div>
-            <div class="text-lg">Client Support</div>
+            <div class="text-4xl font-bold mb-2">24/7</div>
+            <div class="text-lg" data-i18n="stats.support">Client Support</div>
           </div>
         </div>
       </div>
@@ -658,13 +846,15 @@
         <div class="text-center mb-16">
           <span
             class="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full"
+            data-i18n="team.subtitle"
             >Our Team</span
           >
-          <h2 class="text-4xl font-bold mt-4 mb-4">
+          <h2 class="text-4xl font-bold mt-4 mb-4" data-i18n="team.title">
             Meet Our Accounting Experts
           </h2>
           <p
             class="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto"
+            data-i18n="team.description"
           >
             Dedicated professionals committed to your financial success.
           </p>
@@ -681,8 +871,16 @@
               />
             </div>
             <h3 class="text-xl font-bold">Jean Dupont</h3>
-            <p class="text-primary text-sm font-medium mb-4">Founder & CEO</p>
-            <p class="text-slate-600 dark:text-slate-300 mb-4">
+            <p
+              class="text-primary text-sm font-medium mb-4"
+              data-i18n="team.1.position"
+            >
+              Founder & CEO
+            </p>
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="team.1.description"
+            >
               With 25+ years in accounting, Jean leads our firm with expertise
               and vision.
             </p>
@@ -718,8 +916,16 @@
               />
             </div>
             <h3 class="text-xl font-bold">Marie Leclerc</h3>
-            <p class="text-primary text-sm font-medium mb-4">Tax Director</p>
-            <p class="text-slate-600 dark:text-slate-300 mb-4">
+            <p
+              class="text-primary text-sm font-medium mb-4"
+              data-i18n="team.2.position"
+            >
+              Tax Director
+            </p>
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="team.2.description"
+            >
               Specializing in international tax law with 15 years of experience.
             </p>
             <div class="flex justify-center space-x-4">
@@ -754,8 +960,16 @@
               />
             </div>
             <h3 class="text-xl font-bold">Thomas Martin</h3>
-            <p class="text-primary text-sm font-medium mb-4">Audit Partner</p>
-            <p class="text-slate-600 dark:text-slate-300 mb-4">
+            <p
+              class="text-primary text-sm font-medium mb-4"
+              data-i18n="team.3.position"
+            >
+              Audit Partner
+            </p>
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="team.3.description"
+            >
               Brings meticulous attention to detail to our audit services.
             </p>
             <div class="flex justify-center space-x-4">
@@ -790,10 +1004,16 @@
               />
             </div>
             <h3 class="text-xl font-bold">Sophie Bernard</h3>
-            <p class="text-primary text-sm font-medium mb-4">
+            <p
+              class="text-primary text-sm font-medium mb-4"
+              data-i18n="team.4.position"
+            >
               Financial Consultant
             </p>
-            <p class="text-slate-600 dark:text-slate-300 mb-4">
+            <p
+              class="text-slate-600 dark:text-slate-300 mb-4"
+              data-i18n="team.4.description"
+            >
               Helps clients develop strategies for business growth and financial
               health.
             </p>
@@ -828,11 +1048,18 @@
         <div class="text-center mb-16">
           <span
             class="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full"
+            data-i18n="testimonials.subtitle"
             >Testimonials</span
           >
-          <h2 class="text-4xl font-bold mt-4 mb-4">What Our Clients Say</h2>
+          <h2
+            class="text-4xl font-bold mt-4 mb-4"
+            data-i18n="testimonials.title"
+          >
+            What Our Clients Say
+          </h2>
           <p
             class="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto"
+            data-i18n="testimonials.description"
           >
             Don't just take our word for it - hear from our satisfied clients.
           </p>
@@ -851,10 +1078,18 @@
               </div>
               <div class="ml-4">
                 <h4 class="text-lg font-bold">Sarah Johnson</h4>
-                <p class="text-primary text-sm">CEO, TechSolutions</p>
+                <p
+                  class="text-primary text-sm"
+                  data-i18n="testimonials.1.position"
+                >
+                  CEO, TechSolutions
+                </p>
               </div>
             </div>
-            <p class="text-slate-600 dark:text-slate-300 italic mb-4">
+            <p
+              class="text-slate-600 dark:text-slate-300 italic mb-4"
+              data-i18n="testimonials.1.quote"
+            >
               "ExpertComptable transformed our financial operations. Their
               strategic tax planning saved us over $120,000 last year alone."
             </p>
@@ -879,10 +1114,18 @@
               </div>
               <div class="ml-4">
                 <h4 class="text-lg font-bold">Michael Chen</h4>
-                <p class="text-primary text-sm">Founder, GreenEnergy</p>
+                <p
+                  class="text-primary text-sm"
+                  data-i18n="testimonials.2.position"
+                >
+                  Founder, GreenEnergy
+                </p>
               </div>
             </div>
-            <p class="text-slate-600 dark:text-slate-300 italic mb-4">
+            <p
+              class="text-slate-600 dark:text-slate-300 italic mb-4"
+              data-i18n="testimonials.2.quote"
+            >
               "The financial insights provided have been invaluable for our
               growth strategy. They're more than accountants - they're true
               business partners."
@@ -908,10 +1151,18 @@
               </div>
               <div class="ml-4">
                 <h4 class="text-lg font-bold">Emma Rodriguez</h4>
-                <p class="text-primary text-sm">Director, CreativeAgency</p>
+                <p
+                  class="text-primary text-sm"
+                  data-i18n="testimonials.3.position"
+                >
+                  Director, CreativeAgency
+                </p>
               </div>
             </div>
-            <p class="text-slate-600 dark:text-slate-300 italic mb-4">
+            <p
+              class="text-slate-600 dark:text-slate-300 italic mb-4"
+              data-i18n="testimonials.3.quote"
+            >
               "Professional, responsive, and always ahead of deadlines. Our
               go-to accounting partner for years. Highly recommend their
               services!"
@@ -935,10 +1186,16 @@
           <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
             <span
               class="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full"
+              data-i18n="contact.subtitle"
               >Contact Us</span
             >
-            <h2 class="text-4xl font-bold mt-4 mb-6">Get In Touch</h2>
-            <p class="text-xl text-slate-600 dark:text-slate-300 mb-8">
+            <h2 class="text-4xl font-bold mt-4 mb-6" data-i18n="contact.title">
+              Get In Touch
+            </h2>
+            <p
+              class="text-xl text-slate-600 dark:text-slate-300 mb-8"
+              data-i18n="contact.description"
+            >
               Ready to take your financial management to the next level? Contact
               us today for a free consultation.
             </p>
@@ -953,8 +1210,16 @@
                   </div>
                 </div>
                 <div class="ml-4">
-                  <h3 class="text-lg font-bold">Our Office</h3>
-                  <p class="text-slate-600 dark:text-slate-300 mt-1">
+                  <h3
+                    class="text-lg font-bold"
+                    data-i18n="contact.address.title"
+                  >
+                    Our Office
+                  </h3>
+                  <p
+                    class="text-slate-600 dark:text-slate-300 mt-1"
+                    data-i18n="contact.address.value"
+                  >
                     123 Financial District, Paris, France 75001
                   </p>
                 </div>
@@ -969,7 +1234,9 @@
                   </div>
                 </div>
                 <div class="ml-4">
-                  <h3 class="text-lg font-bold">Phone</h3>
+                  <h3 class="text-lg font-bold" data-i18n="contact.phone.title">
+                    Phone
+                  </h3>
                   <p class="text-slate-600 dark:text-slate-300 mt-1">
                     +33 1 23 45 67 89
                   </p>
@@ -985,7 +1252,9 @@
                   </div>
                 </div>
                 <div class="ml-4">
-                  <h3 class="text-lg font-bold">Email</h3>
+                  <h3 class="text-lg font-bold" data-i18n="contact.email.title">
+                    Email
+                  </h3>
                   <p class="text-slate-600 dark:text-slate-300 mt-1">
                     contact@expertcomptable.com
                   </p>
@@ -994,7 +1263,9 @@
             </div>
 
             <div class="mt-12">
-              <h3 class="text-lg font-bold mb-4">Follow Us</h3>
+              <h3 class="text-lg font-bold mb-4" data-i18n="contact.social">
+                Follow Us
+              </h3>
               <div class="flex space-x-4">
                 <a
                   href="#"
@@ -1031,6 +1302,7 @@
                   <label
                     for="name"
                     class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                    data-i18n="contact.form.name"
                     >Name</label
                   >
                   <input
@@ -1043,6 +1315,7 @@
                   <label
                     for="email"
                     class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                    data-i18n="contact.form.email"
                     >Email</label
                   >
                   <input
@@ -1056,6 +1329,7 @@
                 <label
                   for="subject"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                  data-i18n="contact.form.subject"
                   >Subject</label
                 >
                 <input
@@ -1068,6 +1342,7 @@
                 <label
                   for="message"
                   class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                  data-i18n="contact.form.message"
                   >Message</label
                 >
                 <textarea
@@ -1078,7 +1353,8 @@
               </div>
               <div class="mt-8">
                 <button type="submit" class="btn-primary w-full">
-                  Send Message <i class="fas fa-paper-plane ml-2"></i>
+                  <span data-i18n="contact.form.submit">Send Message</span>
+                  <i class="fas fa-paper-plane ml-2"></i>
                 </button>
               </div>
             </form>
@@ -1088,7 +1364,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-white py-12">
+    <footer class="bg-slate-900 text-slate-400 py-12">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid md:grid-cols-4 gap-8">
           <div>
@@ -1100,7 +1376,7 @@
               </div>
               <span class="text-xl font-bold text-white">ExpertComptable</span>
             </a>
-            <p class="mb-4">
+            <p class="mb-4" data-i18n="footer.description">
               Professional accounting services to help your business grow while
               ensuring compliance and financial health.
             </p>
@@ -1121,45 +1397,108 @@
           </div>
 
           <div>
-            <h3 class="text-lg font-semibold text-white mb-4">Services</h3>
+            <h3
+              class="text-lg font-semibold text-white mb-4"
+              data-i18n="footer.services"
+            >
+              Services
+            </h3>
             <ul class="space-y-2">
               <li>
-                <a href="#" class="hover:text-white">Accounting Services</a>
-              </li>
-              <li><a href="#" class="hover:text-white">Tax Planning</a></li>
-              <li>
-                <a href="#" class="hover:text-white">Audit & Assurance</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-white">Financial Consulting</a>
+                <a
+                  href="#"
+                  class="hover:text-white"
+                  data-i18n="footer.services1"
+                  >Accounting Services</a
+                >
               </li>
               <li>
-                <a href="#" class="hover:text-white">Wealth Management</a>
+                <a
+                  href="#"
+                  class="hover:text-white"
+                  data-i18n="footer.services2"
+                  >Tax Planning</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white"
+                  data-i18n="footer.services3"
+                  >Audit & Assurance</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white"
+                  data-i18n="footer.services4"
+                  >Financial Consulting</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white"
+                  data-i18n="footer.services5"
+                  >Wealth Management</a
+                >
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 class="text-lg font-semibold text-white mb-4">Company</h3>
+            <h3
+              class="text-lg font-semibold text-white mb-4"
+              data-i18n="footer.company"
+            >
+              Company
+            </h3>
             <ul class="space-y-2">
-              <li><a href="#" class="hover:text-white">About Us</a></li>
-              <li><a href="#" class="hover:text-white">Our Team</a></li>
-              <li><a href="#" class="hover:text-white">Careers</a></li>
-              <li><a href="#" class="hover:text-white">Blog</a></li>
-              <li><a href="#" class="hover:text-white">Contact</a></li>
+              <li>
+                <a href="#" class="hover:text-white" data-i18n="footer.company1"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white" data-i18n="footer.company2"
+                  >Our Team</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white" data-i18n="footer.company3"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white" data-i18n="footer.company4"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white" data-i18n="footer.company5"
+                  >Contact</a
+                >
+              </li>
             </ul>
           </div>
 
           <div>
-            <h3 class="text-lg font-semibold text-white mb-4">Newsletter</h3>
-            <p class="mb-4">
+            <h3
+              class="text-lg font-semibold text-white mb-4"
+              data-i18n="footer.newsletter"
+            >
+              Newsletter
+            </h3>
+            <p class="mb-4" data-i18n="footer.newsletter_desc">
               Subscribe to our newsletter for financial tips and updates.
             </p>
             <form class="flex">
               <input
                 type="email"
                 placeholder="Your email"
-                class="px-4 py-2 rounded-l-lg w-full bg-gray-100/90 text-black focus:outline-none focus:black lg:pt-[120px]"
+                class="px-4 py-2 rounded-l-lg w-full bg-slate-800 focus:outline-none focus:ring-2 focus:ring-primary"
+                data-i18n-placeholder="footer.newsletter_placeholder"
               />
               <button
                 type="submit"
@@ -1175,81 +1514,628 @@
           class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
         >
           <p class="mb-4 md:mb-0">
-            &copy; 2025 ExpertComptable. All rights reserved.
+            &copy; 2023 ExpertComptable.
+            <span data-i18n="footer.rights">All rights reserved.</span>
           </p>
           <div class="flex space-x-6">
-            <a href="#" class="hover:text-white">Privacy Policy</a>
-            <a href="#" class="hover:text-white">Terms of Service</a>
-            <a href="#" class="hover:text-white">Cookies</a>
+            <a href="#" class="hover:text-white" data-i18n="footer.privacy"
+              >Privacy Policy</a
+            >
+            <a href="#" class="hover:text-white" data-i18n="footer.terms"
+              >Terms of Service</a
+            >
+            <a href="#" class="hover:text-white" data-i18n="footer.cookies"
+              >Cookies</a
+            >
           </div>
         </div>
       </div>
     </footer>
 
     <script>
-      // Theme toggle functionality
-      const themeToggle = document.getElementById("themeToggle");
-      const mobileThemeToggle = document.getElementById("mobileThemeToggle");
-      const html = document.documentElement;
+      // Language translations
+      const translations = {
+        en: {
+          // Navigation
+          "nav.home": "Home",
+          "nav.services": "Services",
+          "nav.about": "About",
+          "nav.team": "Team",
+          "nav.testimonials": "Testimonials",
+          "nav.contact": "Contact",
+          "nav.get_started": "Get Started",
 
-      // Check for saved user preference, if any
-      const currentTheme = localStorage.getItem("theme") || "light";
-      if (currentTheme === "dark") {
-        html.classList.add("dark");
-      }
+          // Hero Section
+          "hero.title1": "Modern",
+          "hero.title2": "Accounting",
+          "hero.title3": "Solutions for Your Business",
+          "hero.subtitle":
+            "We provide comprehensive financial services with a personal touch, helping businesses thrive in today's competitive landscape.",
+          "hero.cta1": "Get Started",
+          "hero.cta2": "Our Services",
+          "hero.trusted": "Trusted by",
+          "hero.experience": "Years Experience",
 
-      // Toggle theme
-      function toggleTheme() {
-        html.classList.toggle("dark");
-        const theme = html.classList.contains("dark") ? "dark" : "light";
-        localStorage.setItem("theme", theme);
-      }
+          // Clients Section
+          "clients.title": "Trusted by leading companies",
 
-      themeToggle.addEventListener("click", toggleTheme);
-      if (mobileThemeToggle) {
-        mobileThemeToggle.addEventListener("click", toggleTheme);
-      }
+          // Services Section
+          "services.subtitle": "Our Services",
+          "services.title": "Comprehensive Financial Solutions",
+          "services.description":
+            "We offer a full range of accounting services to meet all your financial needs.",
+          "services.1.title": "Accounting Services",
+          "services.1.description":
+            "Comprehensive bookkeeping and financial reporting to keep your business organized and compliant.",
+          "services.1.benefit1": "Monthly financial statements",
+          "services.1.benefit2": "Payroll processing",
+          "services.1.benefit3": "Accounts payable/receivable",
+          "services.2.title": "Tax Planning",
+          "services.2.description":
+            "Strategic tax solutions to minimize liabilities and maximize your returns.",
+          "services.2.benefit1": "Tax preparation & filing",
+          "services.2.benefit2": "Tax strategy development",
+          "services.2.benefit3": "Audit representation",
+          "services.3.title": "Audit & Assurance",
+          "services.3.description":
+            "Independent financial audits to ensure accuracy, compliance, and investor confidence.",
+          "services.3.benefit1": "Financial statement audits",
+          "services.3.benefit2": "Internal control reviews",
+          "services.3.benefit3": "Compliance audits",
+          "services.4.title": "Financial Consulting",
+          "services.4.description":
+            "Expert advice to help you make informed financial decisions and grow your business.",
+          "services.4.benefit1": "Business valuation",
+          "services.4.benefit2": "Financial forecasting",
+          "services.4.benefit3": "Mergers & acquisitions",
+          "services.5.title": "Wealth Management",
+          "services.5.description":
+            "Personalized strategies to grow and protect your personal and business wealth.",
+          "services.5.benefit1": "Investment planning",
+          "services.5.benefit2": "Retirement planning",
+          "services.5.benefit3": "Estate planning",
+          "services.6.title": "Risk Management",
+          "services.6.description":
+            "Identify and mitigate financial risks to protect your business assets.",
+          "services.6.benefit1": "Fraud prevention",
+          "services.6.benefit2": "Internal controls",
+          "services.6.benefit3": "Insurance planning",
+          "services.learn_more": "Learn more",
 
-      // Mobile menu toggle
-      const mobileMenuButton = document.getElementById("mobileMenuButton");
-      const mobileMenu = document.getElementById("mobileMenu");
+          // About Section
+          "about.subtitle": "About Us",
+          "about.title": "Why Choose Our Accounting Firm",
+          "about.description":
+            "With over two decades of experience, we've helped hundreds of businesses navigate complex financial landscapes while maintaining the highest standards of professionalism and integrity.",
+          "about.feature1.title": "Certified Professionals",
+          "about.feature1.description":
+            "Our team holds top accounting certifications including CPA, CMA, and CFA.",
+          "about.feature2.title": "Personalized Service",
+          "about.feature2.description":
+            "We take time to understand your unique needs and provide tailored solutions.",
+          "about.feature3.title": "Data Security",
+          "about.feature3.description":
+            "Your financial data is protected with enterprise-grade security measures.",
+          "about.retention": "Client Retention Rate",
 
-      mobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
+          // Stats Section
+          "stats.clients": "Satisfied Clients",
+          "stats.experience": "Years Experience",
+          "stats.awards": "Professional Awards",
+          "stats.support": "Client Support",
 
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
+          // Team Section
+          "team.subtitle": "Our Team",
+          "team.title": "Meet Our Accounting Experts",
+          "team.description":
+            "Dedicated professionals committed to your financial success.",
+          "team.1.position": "Founder & CEO",
+          "team.1.description":
+            "With 25+ years in accounting, Jean leads our firm with expertise and vision.",
+          "team.2.position": "Tax Director",
+          "team.2.description":
+            "Specializing in international tax law with 15 years of experience.",
+          "team.3.position": "Audit Partner",
+          "team.3.description":
+            "Brings meticulous attention to detail to our audit services.",
+          "team.4.position": "Financial Consultant",
+          "team.4.description":
+            "Helps clients develop strategies for business growth and financial health.",
 
-          const targetId = this.getAttribute("href");
-          if (targetId === "#") return;
+          // Testimonials Section
+          "testimonials.subtitle": "Testimonials",
+          "testimonials.title": "What Our Clients Say",
+          "testimonials.description":
+            "Don't just take our word for it - hear from our satisfied clients.",
+          "testimonials.1.position": "CEO, TechSolutions",
+          "testimonials.1.quote":
+            '"ExpertComptable transformed our financial operations. Their strategic tax planning saved us over $120,000 last year alone."',
+          "testimonials.2.position": "Founder, GreenEnergy",
+          "testimonials.2.quote":
+            "\"The financial insights provided have been invaluable for our growth strategy. They're more than accountants - they're true business partners.\"",
+          "testimonials.3.position": "Director, CreativeAgency",
+          "testimonials.3.quote":
+            '"Professional, responsive, and always ahead of deadlines. Our go-to accounting partner for years. Highly recommend their services!"',
 
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            // Close mobile menu if open
-            if (!mobileMenu.classList.contains("hidden")) {
-              mobileMenu.classList.add("hidden");
-            }
+          // Contact Section
+          "contact.subtitle": "Contact Us",
+          "contact.title": "Get In Touch",
+          "contact.description":
+            "Ready to take your financial management to the next level? Contact us today for a free consultation.",
+          "contact.address.title": "Our Office",
+          "contact.address.value":
+            "123 Financial District, Paris, France 75001",
+          "contact.phone.title": "Phone",
+          "contact.email.title": "Email",
+          "contact.social": "Follow Us",
+          "contact.form.name": "Name",
+          "contact.form.email": "Email",
+          "contact.form.subject": "Subject",
+          "contact.form.message": "Message",
+          "contact.form.submit": "Send Message",
 
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: "smooth",
-            });
+          // Footer
+          "footer.description":
+            "Professional accounting services to help your business grow while ensuring compliance and financial health.",
+          "footer.services": "Services",
+          "footer.services1": "Accounting Services",
+          "footer.services2": "Tax Planning",
+          "footer.services3": "Audit & Assurance",
+          "footer.services4": "Financial Consulting",
+          "footer.services5": "Wealth Management",
+          "footer.company": "Company",
+          "footer.company1": "About Us",
+          "footer.company2": "Our Team",
+          "footer.company3": "Careers",
+          "footer.company4": "Blog",
+          "footer.company5": "Contact",
+          "footer.newsletter": "Newsletter",
+          "footer.newsletter_desc":
+            "Subscribe to our newsletter for financial tips and updates.",
+          "footer.newsletter_placeholder": "Your email",
+          "footer.rights": "All rights reserved.",
+          "footer.privacy": "Privacy Policy",
+          "footer.terms": "Terms of Service",
+          "footer.cookies": "Cookies",
+        },
+        fr: {
+          // Navigation
+          "nav.home": "Accueil",
+          "nav.services": "Services",
+          "nav.about": "À propos",
+          "nav.team": "Équipe",
+          "nav.testimonials": "Témoignages",
+          "nav.contact": "Contact",
+          "nav.get_started": "Commencer",
+
+          // Hero Section
+          "hero.title1": "Solutions",
+          "hero.title2": "Comptables",
+          "hero.title3": "Modernes pour Votre Entreprise",
+          "hero.subtitle":
+            "Nous fournissons des services financiers complets avec une touche personnelle, aidant les entreprises à prospérer dans le paysage concurrentiel d'aujourd'hui.",
+          "hero.cta1": "Commencer",
+          "hero.cta2": "Nos Services",
+          "hero.trusted": "Fiable pour",
+          "hero.experience": "Ans d'Expérience",
+
+          // Clients Section
+          "clients.title": "Fiable par les entreprises leaders",
+
+          // Services Section
+          "services.subtitle": "Nos Services",
+          "services.title": "Solutions Financières Complètes",
+          "services.description":
+            "Nous proposons une gamme complète de services comptables pour répondre à tous vos besoins financiers.",
+          "services.1.title": "Services Comptables",
+          "services.1.description":
+            "Tenue de livres et rapports financiers complets pour garder votre entreprise organisée et conforme.",
+          "services.1.benefit1": "États financiers mensuels",
+          "services.1.benefit2": "Traitement de la paie",
+          "services.1.benefit3": "Comptes créditeurs/débiteurs",
+          "services.2.title": "Planification Fiscale",
+          "services.2.description":
+            "Solutions fiscales stratégiques pour minimiser les passifs et maximiser vos rendements.",
+          "services.2.benefit1": "Préparation et déclaration fiscales",
+          "services.2.benefit2": "Développement de stratégies fiscales",
+          "services.2.benefit3": "Représentation en cas d'audit",
+          "services.3.title": "Audit et Certification",
+          "services.3.description":
+            "Audits financiers indépendants pour garantir l'exactitude, la conformité et la confiance des investisseurs.",
+          "services.3.benefit1": "Audits des états financiers",
+          "services.3.benefit2": "Examens des contrôles internes",
+          "services.3.benefit3": "Audits de conformité",
+          "services.4.title": "Conseil Financier",
+          "services.4.description":
+            "Conseils d'experts pour vous aider à prendre des décisions financières éclairées et à développer votre entreprise.",
+          "services.4.benefit1": "Évaluation d'entreprise",
+          "services.4.benefit2": "Prévisions financières",
+          "services.4.benefit3": "Fusions et acquisitions",
+          "services.5.title": "Gestion de Patrimoine",
+          "services.5.description":
+            "Stratégies personnalisées pour développer et protéger votre patrimoine personnel et professionnel.",
+          "services.5.benefit1": "Planification d'investissement",
+          "services.5.benefit2": "Planification de retraite",
+          "services.5.benefit3": "Planification successorale",
+          "services.6.title": "Gestion des Risques",
+          "services.6.description":
+            "Identifier et atténuer les risques financiers pour protéger les actifs de votre entreprise.",
+          "services.6.benefit1": "Prévention de la fraude",
+          "services.6.benefit2": "Contrôles internes",
+          "services.6.benefit3": "Planification d'assurance",
+          "services.learn_more": "En savoir plus",
+
+          // About Section
+          "about.subtitle": "À propos",
+          "about.title": "Pourquoi Choisir Notre Cabinet Comptable",
+          "about.description":
+            "Avec plus de deux décennies d'expérience, nous avons aidé des centaines d'entreprises à naviguer dans des paysages financiers complexes tout en maintenant les normes les plus élevées de professionnalisme et d'intégrité.",
+          "about.feature1.title": "Professionnels Certifiés",
+          "about.feature1.description":
+            "Notre équipe détient les principales certifications comptables, y compris CPA, CMA et CFA.",
+          "about.feature2.title": "Service Personnalisé",
+          "about.feature2.description":
+            "Nous prenons le temps de comprendre vos besoins uniques et fournissons des solutions sur mesure.",
+          "about.feature3.title": "Sécurité des Données",
+          "about.feature3.description":
+            "Vos données financières sont protégées par des mesures de sécurité de niveau entreprise.",
+          // Stats Section
+          "stats.clients": "Clients Satisfaits",
+          "stats.experience": "Ans d'Expérience",
+          "stats.awards": "Prix Professionnels",
+          "stats.support": "Support Client",
+
+          // Team Section
+          "team.subtitle": "Notre Équipe",
+          "team.title": "Rencontrez Nos Experts Comptables",
+          "team.description":
+            "Des professionnels dévoués engagés dans votre succès financier.",
+          "team.1.position": "Fondateur & PDG",
+          "team.1.description":
+            "Avec 25+ ans en comptabilité, Jean dirige notre cabinet avec expertise et vision.",
+          "team.2.position": "Directeur Fiscal",
+          "team.2.description":
+            "Spécialisé en droit fiscal international avec 15 ans d'expérience.",
+          "team.3.position": "Associé en Audit",
+          "team.3.description":
+            "Apporte une attention méticuleuse aux détails à nos services d'audit.",
+          "team.4.position": "Conseiller Financier",
+          "team.4.description":
+            "Aide les clients à développer des stratégies pour la croissance et la santé financière.",
+
+          // Testimonials Section
+          "testimonials.subtitle": "Témoignages",
+          "testimonials.title": "Ce Que Disent Nos Clients",
+          "testimonials.description":
+            "Ne croyez pas seulement nos mots – écoutez nos clients satisfaits.",
+          "testimonials.1.position": "PDG, TechSolutions",
+          "testimonials.1.quote":
+            '"ExpertComptable a transformé nos opérations financières. Leur planification fiscale stratégique nous a fait économiser plus de 120 000 $ l\'année dernière."',
+          "testimonials.2.position": "Fondateur, GreenEnergy",
+          "testimonials.2.quote":
+            '"Les conseils financiers fournis ont été inestimables pour notre stratégie de croissance. Plus que des comptables – de vrais partenaires commerciaux."',
+          "testimonials.3.position": "Directeur, CreativeAgency",
+          "testimonials.3.quote":
+            '"Professionnels, réactifs et toujours en avance sur les délais. Notre partenaire comptable depuis des années. Je recommande vivement leurs services !"',
+
+          // Contact Section
+          "contact.subtitle": "Contactez-nous",
+          "contact.title": "Entrons en Contact",
+          "contact.description":
+            "Prêt à passer à un niveau supérieur en gestion financière ? Contactez-nous dès aujourd'hui pour une consultation gratuite.",
+          "contact.address.title": "Notre Bureau",
+          "contact.address.value":
+            "123 Quartier Financier, Paris, France 75001",
+          "contact.phone.title": "Téléphone",
+          "contact.email.title": "Email",
+          "contact.social": "Suivez-nous",
+          "contact.form.name": "Nom",
+          "contact.form.email": "Email",
+          "contact.form.subject": "Sujet",
+          "contact.form.message": "Message",
+          "contact.form.submit": "Envoyer le Message",
+
+          // Footer
+          "footer.description":
+            "Services comptables professionnels pour aider votre entreprise à croître tout en assurant conformité et santé financière.",
+          "footer.services": "Services",
+          "footer.services1": "Services Comptables",
+          "footer.services2": "Planification Fiscale",
+          "footer.services3": "Audit & Certification",
+          "footer.services4": "Conseil Financier",
+          "footer.services5": "Gestion de Patrimoine",
+          "footer.company": "Entreprise",
+          "footer.company1": "À Propos",
+          "footer.company2": "Notre Équipe",
+          "footer.company3": "Carrières",
+          "footer.company4": "Blog",
+          "footer.company5": "Contact",
+          "footer.newsletter": "Newsletter",
+          "footer.newsletter_desc":
+            "Abonnez-vous à notre newsletter pour des conseils financiers et des mises à jour.",
+          "footer.newsletter_placeholder": "Votre email",
+          "footer.rights": "Tous droits réservés.",
+          "footer.privacy": "Politique de Confidentialité",
+          "footer.terms": "Conditions d'Utilisation",
+          "footer.cookies": "Cookies",
+        },
+        ar: {
+          // Navigation
+          "nav.home": "الرئيسية",
+          "nav.services": "الخدمات",
+          "nav.about": "من نحن",
+          "nav.team": "الفريق",
+          "nav.testimonials": "آراء العملاء",
+          "nav.contact": "اتصل بنا",
+          "nav.get_started": "ابدأ الآن",
+
+          // Hero Section
+          "hero.title1": "حلول",
+          "hero.title2": "محاسبية",
+          "hero.title3": "حديثة لعملك",
+          "hero.subtitle":
+            "نقدم خدمات مالية شاملة بلمسة شخصية، نساعد الشركات على الازدهار في السوق التنافسي اليوم.",
+          "hero.cta1": "ابدأ الآن",
+          "hero.cta2": "خدماتنا",
+          "hero.trusted": "موثوق به من قبل",
+          "hero.experience": "سنوات خبرة",
+
+          // Clients Section
+          "clients.title": "موثوق به من قبل الشركات الرائدة",
+
+          // Services Section
+          "services.subtitle": "خدماتنا",
+          "services.title": "حلول مالية شاملة",
+          "services.description":
+            "نقدم مجموعة كاملة من الخدمات المحاسبية لتلبية جميع احتياجاتك المالية.",
+          "services.1.title": "الخدمات المحاسبية",
+          "services.1.description":
+            "حسابات و تقارير مالية شاملة لإبقاء عملك منظمًا ومتوافقًا مع الأنظمة.",
+          "services.1.benefit1": "كشوفات مالية شهرية",
+          "services.1.benefit2": "معالجة كشوف المرتبات",
+          "services.1.benefit3": "حسابات دائنة/مدينة",
+          "services.2.title": "التخطيط الضريبي",
+          "services.2.description":
+            "حلول ضريبية استراتيجية لتقليل الالتزامات وزيادة عوائدك.",
+          "services.2.benefit1": "إعداد وتقديم الإقرارات الضريبية",
+          "services.2.benefit2": "تطوير استراتيجيات ضريبية",
+          "services.2.benefit3": "تمثيل في عمليات التدقيق",
+          "services.3.title": "التدقيق والضمان",
+          "services.3.description":
+            "تدقيق مالي مستقل لضمان الدقة والامتثال وثقة المستثمرين.",
+          "services.3.benefit1": "تدقيق القوائم المالية",
+          "services.3.benefit2": "مراجعة الضوابط الداخلية",
+          "services.3.benefit3": "تدقيق الامتثال",
+          "services.4.title": "الاستشارات المالية",
+          "services.4.description":
+            "نصائح خبراء لمساعدتك في اتخاذ قرارات مالية مستنيرة وتنمية عملك.",
+          "services.4.benefit1": "تقييم الأعمال",
+          "services.4.benefit2": "التنبؤ المالي",
+          "services.4.benefit3": "عمليات الدمج والاستحواذ",
+          "services.5.title": "إدارة الثروات",
+          "services.5.description":
+            "استراتيجيات مخصصة لتنمية وحماية ثروتك الشخصية والعملية.",
+          "services.5.benefit1": "تخطيط الاستثمار",
+          "services.5.benefit2": "تخطيط التقاعد",
+          "services.5.benefit3": "تخطيط التركة",
+          "services.6.title": "إدارة المخاطر",
+          "services.6.description":
+            "تحديد وتخفيف المخاطر المالية لحماية أصول عملك.",
+          "services.6.benefit1": "منع الاحتيال",
+          "services.6.benefit2": "ضوابط داخلية",
+          "services.6.benefit3": "تخطيط التأمين",
+          "services.learn_more": "المزيد",
+
+          // About Section
+          "about.subtitle": "من نحن",
+          "about.title": "لماذا تختار شركتنا المحاسبية",
+          "about.description":
+            "بخبرة تزيد عن عقدين، ساعدنا المئات من الشركات في التعامل مع التعقيدات المالية مع الحفاظ على أعلى معايير الاحترافية والنزاهة.",
+          "about.feature1.title": "محترفون معتمدون",
+          "about.feature1.description":
+            "فريقنا يحمل أعلى الشهادات المحاسبية بما في ذلك CPA وCMA وCFA.",
+          "about.feature2.title": "خدمة مخصصة",
+          "about.feature2.description":
+            "نأخذ الوقت لفهم احتياجاتك الفريدة ونقدم حلولاً مصممة خصيصًا لك.",
+          "about.feature3.title": "أمان البيانات",
+          "about.feature3.description":
+            "بياناتك المالية محمية بإجراءات أمان على مستوى المؤسسات.",
+          "about.retention": "معدل الاحتفاظ بالعملاء",
+
+          // Stats Section
+          "stats.clients": "عملاء راضون",
+          "stats.experience": "سنوات خبرة",
+          "stats.awards": "جوائز مهنية",
+          "stats.support": "دعم العملاء",
+
+          // Team Section
+          "team.subtitle": "فريقنا",
+          "team.title": "تعرف على خبرائنا المحاسبين",
+          "team.description": "محترفون مخلصون ملتزمون بنجاحك المالي.",
+          "team.1.position": "المؤسس والرئيس التنفيذي",
+          "team.1.description":
+            "بخبرة تزيد عن 25 سنة في المحاسبة، يقود جان شركتنا بالخبرة والرؤية.",
+          "team.2.position": "مدير الضرائب",
+          "team.2.description":
+            "متخصص في القانون الضريبي الدولي مع 15 سنة من الخبرة.",
+          "team.3.position": "شريك التدقيق",
+          "team.3.description":
+            "يتميز بدقة الانتباه للتفاصيل في خدمات التدقيق لدينا.",
+          "team.4.position": "مستشار مالي",
+          "team.4.description":
+            "يساعد العملاء في تطوير استراتيجيات لنمو الأعمال والصحة المالية.",
+
+          // Testimonials Section
+          "testimonials.subtitle": "آراء العملاء",
+          "testimonials.title": "ما يقوله عملاؤنا",
+          "testimonials.description":
+            "لا تأخذ كلمتنا فقط - استمع إلى عملائنا الراضين.",
+          "testimonials.1.position": "الرئيس التنفيذي، TechSolutions",
+          "testimonials.1.quote":
+            "حولت ExpertComptable عملياتنا المالية. وفرت لنا خطتهم الضريبية الاستراتيجية أكثر من 120,000 دولار العام الماضي وحده.",
+          "testimonials.2.position": "المؤسس، GreenEnergy",
+          "testimonials.2.quote":
+            "كانت الرؤى المالية المقدمة لا تقدر بثمن لاستراتيجية نمونا. هم أكثر من محاسبين - إنهم شركاء أعمال حقيقيون.",
+          "testimonials.3.position": "المدير، CreativeAgency",
+          "testimonials.3.quote":
+            "محترفون، سريعون في الرد، ودائمًا قبل المواعيد النهائية. شريكنا المحاسبي لسنوات. نوصي بشدة بخدماتهم!",
+
+          // Contact Section
+          "contact.subtitle": "اتصل بنا",
+          "contact.title": "تواصل معنا",
+          "contact.description":
+            "مستعد لرفع مستوى إدارتك المالية؟ اتصل بنا اليوم للحصول على استشارة مجانية.",
+          "contact.address.title": "مكتبنا",
+          "contact.address.value": "123 المنطقة المالية، باريس، فرنسا 75001",
+          "contact.phone.title": "الهاتف",
+          "contact.email.title": "البريد الإلكتروني",
+          "contact.social": "تابعنا",
+          "contact.form.name": "الاسم",
+          "contact.form.email": "البريد الإلكتروني",
+          "contact.form.subject": "الموضوع",
+          "contact.form.message": "الرسالة",
+          "contact.form.submit": "إرسال الرسالة",
+
+          // Footer
+          "footer.description":
+            "خدمات محاسبية احترافية لمساعدة عملك على النمو مع ضمان الامتثال والصحة المالية.",
+          "footer.services": "الخدمات",
+          "footer.services1": "الخدمات المحاسبية",
+          "footer.services2": "التخطيط الضريبي",
+          "footer.services3": "التدقيق والضمان",
+          "footer.services4": "الاستشارات المالية",
+          "footer.services5": "إدارة الثروات",
+          "footer.company": "الشركة",
+          "footer.company1": "من نحن",
+          "footer.company2": "فريقنا",
+          "footer.company3": "الوظائف",
+          "footer.company4": "المدونة",
+          "footer.company5": "اتصل بنا",
+          "footer.newsletter": "النشرة الإخبارية",
+          "footer.newsletter_desc":
+            "اشترك في نشرتنا الإخبارية للحصول على نصائح مالية وتحديثات.",
+          "footer.newsletter_placeholder": "بريدك الإلكتروني",
+          "footer.rights": "جميع الحقوق محفوظة.",
+          "footer.privacy": "سياسة الخصوصية",
+          "footer.terms": "شروط الخدمة",
+          "footer.cookies": "الكوكيز",
+        },
+      };
+      let currentLang = "en";
+
+      function changeLanguage(lang) {
+        currentLang = lang;
+        applyTranslations();
+        document.documentElement.lang = lang;
+
+        // Update language switcher display
+        document.getElementById("current-lang").textContent =
+          lang.toUpperCase();
+        document.getElementById("mobile-current-lang").textContent =
+          lang.toUpperCase();
+
+        // Update active language in dropdowns
+        document.querySelectorAll(".lang-item").forEach((item) => {
+          item.classList.remove("active");
+          if (item.getAttribute("data-lang") === lang) {
+            item.classList.add("active");
           }
         });
+
+        // Handle RTL for Arabic
+        if (lang === "ar") {
+          document.body.classList.add("rtl");
+          document.body.dir = "rtl";
+          document.documentElement.dir = "rtl";
+        } else {
+          document.body.classList.remove("rtl");
+          document.body.dir = "ltr";
+          document.documentElement.dir = "ltr";
+        }
+
+        // Save preference
+        localStorage.setItem("userLang", lang);
+      }
+
+      function applyTranslations() {
+        // Translate all elements with data-i18n attribute
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.getAttribute("data-i18n");
+          if (translations[currentLang] && translations[currentLang][key]) {
+            element.textContent = translations[currentLang][key];
+          }
+        });
+
+        // Translate input placeholders
+        document
+          .querySelectorAll("[data-i18n-placeholder]")
+          .forEach((element) => {
+            const key = element.getAttribute("data-i18n-placeholder");
+            if (translations[currentLang] && translations[currentLang][key]) {
+              element.placeholder = translations[currentLang][key];
+            }
+          });
+      }
+
+      // Initialize language
+      document.addEventListener("DOMContentLoaded", () => {
+        // Set up language switcher click handlers
+        document.querySelectorAll(".lang-item").forEach((item) => {
+          item.addEventListener("click", (e) => {
+            e.preventDefault();
+            changeLanguage(item.getAttribute("data-lang"));
+
+            // Close dropdowns
+            document.getElementById("lang-menu").classList.add("hidden");
+            document.getElementById("mobile-lang-menu").classList.add("hidden");
+          });
+        });
+
+        // Toggle dropdown menus
+        document
+          .getElementById("lang-menu-button")
+          .addEventListener("click", () => {
+            document.getElementById("lang-menu").classList.toggle("hidden");
+          });
+
+        document
+          .getElementById("mobile-lang-menu-button")
+          .addEventListener("click", () => {
+            document
+              .getElementById("mobile-lang-menu")
+              .classList.toggle("hidden");
+          });
+
+        // Load saved language or browser preference
+        const savedLang = localStorage.getItem("userLang");
+        const browserLang = navigator.language.substring(0, 2);
+        const defaultLang = ["en", "fr", "ar"].includes(savedLang)
+          ? savedLang
+          : ["en", "fr", "ar"].includes(browserLang)
+          ? browserLang
+          : "en";
+
+        changeLanguage(defaultLang);
+
+        // Mobile menu toggle
+        document
+          .getElementById("mobileMenuButton")
+          .addEventListener("click", () => {
+            document.getElementById("mobileMenu").classList.toggle("hidden");
+          });
+
+        // Theme toggle (keep your existing theme code)
+        // ...
       });
 
-      // Add shadow to navbar on scroll
-      window.addEventListener("scroll", () => {
-        const nav = document.querySelector("nav");
-        if (window.scrollY > 10) {
-          nav.classList.add("shadow-md");
-        } else {
-          nav.classList.remove("shadow-md");
+      // Close dropdowns when clicking outside
+      window.addEventListener("click", (e) => {
+        if (!e.target.closest(".lang-switcher")) {
+          document.getElementById("lang-menu").classList.add("hidden");
+          document.getElementById("mobile-lang-menu").classList.add("hidden");
         }
       });
     </script>
+
   </body>
 </html>
