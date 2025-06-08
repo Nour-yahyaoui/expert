@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expert Comptable | Modern Accounting Solutions</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --primary-light: #6366f1;
+        --primary-dark: #4338ca;
+        --secondary: #10b981;
+        --dark: #1e293b;
+        --light: #f8fafc;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        @apply bg-light-50 text-slate-800 transition-colors duration-300;
+      }
+
+      body.dark {
+        @apply bg-slate-900 text-slate-100;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+      }
+
+      .theme-toggle {
+        @apply w-12 h-6 rounded-full bg-slate-200 dark:bg-slate-700 relative cursor-pointer;
+      }
+
+      .theme-toggle::after {
+        content: "";
+        @apply absolute w-5 h-5 rounded-full bg-white dark:bg-slate-300 top-0.5 left-0.5 shadow-md transition-transform duration-300;
+      }
+
+      .dark .theme-toggle::after {
+        transform: translateX(1.5rem);
+      }
+
+      .nav-link {
+        @apply relative after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full;
+      }
+
+      .btn-primary {
+        @apply bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl;
+      }
+
+      .btn-secondary {
+        @apply bg-secondary hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl;
+      }
+
+      .service-card {
+        @apply bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+      }
+
+      .testimonial-card {
+        @apply bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg;
+      }
+
+      .team-card {
+        @apply bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg text-center;
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #4f46e5, #10b981);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full z-50 bg-black dark:bg-slate-900/80 backdrop-blur-md shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-6 text-white">
+        <div class="flex justify-between items-center h-20">
+          <a href="#" class="flex items-center space-x-2">
+            <div
+              class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white"
+            >
+              <i class="fas fa-calculator"></i>
+            </div>
+            <span class="text-xl font-bold dark:text-white"
+              >ExpertComptable</span
+            >
+          </a>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#team" class="nav-link">Team</a>
+            <a href="#testimonials" class="nav-link">Testimonials</a>
+            <a href="#contact" class="nav-link">Contact</a>
+
+            <div class="flex items-center space-x-4">
+              <div class="theme-toggle" id="themeToggle"></div>
+              <a href="#contact" class="btn-primary">Get Started</a>
+            </div>
+          </div>
+
+          <button
+            class="md:hidden text-slate-700 dark:text-slate-300"
+            id="mobileMenuButton"
+          >
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        class="md:hidden hidden bg-white dark:bg-slate-800 shadow-lg transition-all duration-300"
+        id="mobileMenu"
+      >
+        <div class="px-6 py-4 space-y-4 transition-all duration-300">
+          <a href="#home" class="block nav-link">Home</a>
+          <a href="#services" class="block nav-link">Services</a>
+          <a href="#about" class="block nav-link">About</a>
+          <a href="#team" class="block nav-link">Team</a>
+          <a href="#testimonials" class="block nav-link">Testimonials</a>
+          <a href="#contact" class="block nav-link">Contact</a>
+
+          <div class="flex items-center justify-between pt-4">
+            <div class="theme-toggle" id="mobileThemeToggle"></div>
+            <a href="#contact" class="btn-primary">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 mb-12 lg:mb-0">
+            <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+              Modern <span class="gradient-text">Accounting</span> Solutions for
+              Your Business
+            </h1>
+            <p class="text-xl text-slate-600 dark:text-slate-300 mb-8">
+              We provide comprehensive financial services with a personal touch,
+              helping businesses thrive in today's competitive landscape.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+            >
+              <a href="#contact" class="btn-primary">
+                Get Started <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+              <a href="#services" class="btn-secondary">
+                Our Services <i class="fas fa-chart-line ml-2"></i>
+              </a>
+            </div>
+
+            <div class="mt-12 flex items-center space-x-8">
+              <div class="flex items-center">
+                <div class="flex -space-x-2">
+                  <img
+                    src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&h=100&fit=crop&crop=faces"
+                    class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800"
+                    alt="Client"
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=faces"
+                    class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800"
+                    alt="Client"
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=faces"
+                    class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800"
+                    alt="Client"
+                  />
+                </div>
+                <div class="ml-4">
+                  <p class="text-sm font-medium">
+                    Trusted by
+                    <span class="text-primary font-bold">500+</span> clients
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:w-1/2 lg:pl-12">
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                class="rounded-xl shadow-2xl w-full"
+                alt="Accounting professional working"
+              />
+              <div
+                class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-lg"
+              >
+                <div class="text-4xl font-bold text-primary">20+</div>
+                <div class="text-sm text-slate-500 dark:text-slate-400">
+                  Years Experience
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients Logo Section -->
+    <section class="py-12 bg-slate-100 dark:bg-slate-800">
+      <div class="max-w-7xl mx-auto px-6">
+        <p class="text-center text-slate-500 dark:text-slate-400 mb-8">
+          Trusted by leading companies
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+          <div
+            class="flex justify-center items-center h-16 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+          >
+            <img
+              src="https://logo.clearbit.com/forbes.com"
+              alt="Forbes"
+              class="h-8"
+            />
+          </div>
+          <div
+            class="flex justify-center items-center h-16 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+          >
+            <img
+              src="https://logo.clearbit.com/techcrunch.com"
+              alt="TechCrunch"
+              class="h-8"
+            />
+          </div>
+          <div
+            class="flex justify-center items-center h-16 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+          >
+            <img
+              src="https://logo.clearbit.com/entrepreneur.com"
+              alt="Entrepreneur"
+              class="h-8"
+            />
+          </div>
+          <div
+            class="flex justify-center items-center h-16 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+          >
+            <img
+              src="https://logo.clearbit.com/inc.com"
+              alt="Inc"
+              class="h-8"
+            />
+          </div>
+          <div
+            class="flex justify-center items-center h-16 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+          >
+            <img
+              src="https://logo.clearbit.com/fastcompany.com"
+              alt="Fast Company"
+              class="h-8"
+            />
+          </div>
+          <div
+            class="flex justify-center items-center h-16 grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+          >
+            <img
+              src="https://logo.clearbit.com/wsj.com"
+              alt="Wall Street Journal"
+              class="h-8"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <span
+            class="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full"
+            >Our Services</span
+          >
+          <h2 class="text-4xl font-bold mt-4 mb-4">
+            Comprehensive Financial Solutions
+          </h2>
+          <p
+            class="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto"
+          >
+            We offer a full range of accounting services to meet all your
+            financial needs.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Service 1 -->
+          <div class="service-card group">
+            <div
+              class="w-14 h-14 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300"
+            >
+              <i class="fas fa-calculator text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Accounting Services</h3>
+            <p class="text-slate-600 dark:text-slate-300 mb-4">
+              Comprehensive bookkeeping and financial reporting to keep your
+              business organized and compliant.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Monthly financial statements</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Payroll processing</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Accounts payable/receivable</span>
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
+            >
+              Learn more
+              <i
+                class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
+              ></i>
+            </a>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-card group">
+            <div
+              class="w-14 h-14 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300"
+            >
+              <i class="fas fa-file-invoice-dollar text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Tax Planning</h3>
+            <p class="text-slate-600 dark:text-slate-300 mb-4">
+              Strategic tax solutions to minimize liabilities and maximize your
+              returns.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Tax preparation & filing</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Tax strategy development</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Audit representation</span>
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
+            >
+              Learn more
+              <i
+                class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
+              ></i>
+            </a>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-card group">
+            <div
+              class="w-14 h-14 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300"
+            >
+              <i class="fas fa-search-dollar text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Audit & Assurance</h3>
+            <p class="text-slate-600 dark:text-slate-300 mb-4">
+              Independent financial audits to ensure accuracy, compliance, and
+              investor confidence.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Financial statement audits</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Internal control reviews</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Compliance audits</span>
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
+            >
+              Learn more
+              <i
+                class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
+              ></i>
+            </a>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-card group">
+            <div
+              class="w-14 h-14 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300"
+            >
+              <i class="fas fa-chart-line text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Financial Consulting</h3>
+            <p class="text-slate-600 dark:text-slate-300 mb-4">
+              Expert advice to help you make informed financial decisions and
+              grow your business.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Business valuation</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Financial forecasting</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Mergers & acquisitions</span>
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
+            >
+              Learn more
+              <i
+                class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
+              ></i>
+            </a>
+          </div>
+
+          <!-- Service 5 -->
+          <div class="service-card group">
+            <div
+              class="w-14 h-14 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300"
+            >
+              <i class="fas fa-hand-holding-usd text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Wealth Management</h3>
+            <p class="text-slate-600 dark:text-slate-300 mb-4">
+              Personalized strategies to grow and protect your personal and
+              business wealth.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Investment planning</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Retirement planning</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Estate planning</span>
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
+            >
+              Learn more
+              <i
+                class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
+              ></i>
+            </a>
+          </div>
+
+          <!-- Service 6 -->
+          <div class="service-card group">
+            <div
+              class="w-14 h-14 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300"
+            >
+              <i class="fas fa-lock text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Risk Management</h3>
+            <p class="text-slate-600 dark:text-slate-300 mb-4">
+              Identify and mitigate financial risks to protect your business
+              assets.
+            </p>
+            <ul class="space-y-2 mb-6">
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Fraud prevention</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Internal controls</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check text-primary mt-1 mr-2"></i>
+                <span>Insurance planning</span>
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              class="text-primary font-medium inline-flex items-center group-hover:text-primary-dark"
+            >
+              Learn more
+              <i
+                class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"
+              ></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-100 dark:bg-slate-800">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center">
+          <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+            <span
+              class="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full"
+              >About Us</span
+            >
+            <h2 class="text-4xl font-bold mt-4 mb-6">
+              Why Choose Our Accounting Firm
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 mb-6">
+              With over two decades of experience, we've helped hundreds of
+              businesses navigate complex financial landscapes while maintaining
+              the highest standards of professionalism and integrity.
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center"
+                  >
+                    <i class="fas fa-award text-xl"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-bold">Certified Professionals</h3>
+                  <p class="text-slate-600 dark:text-slate-300 mt-1">
+                    Our team holds top accounting certifications including CPA,
+                    CMA, and CFA.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center"
+                  >
+                    <i class="fas fa-headset text-xl"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-bold">Personalized Service</h3>
+                  <p class="text-slate-600 dark:text-slate-300 mt-1">
+                    We take time to understand your unique needs and provide
+                    tailored solutions.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center"
+                  >
+                    <i class="fas fa-shield-alt text-xl"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-xl font-bold">Data Security</h3>
+                  <p class="text-slate-600 dark:text-slate-300 mt-1">
+                    Your financial data is protected with enterprise-grade
+                    security measures.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:w-1/2">
+            <div class="relative">
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                class="rounded-xl shadow-2xl w-full"
+                alt="Team meeting"
+              />
+              <div
+                class="absolute -bottom-6 -left-6 bg-white dark:bg-slate-700 p-6 rounded-xl shadow-lg"
+              >
+                <div class="text-4xl font-bold text-primary">95%</div>
+                <div class="text-lg font-medium">Client Retention Rate</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-primary">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8 text-center">
+          <div class="p-6">
+            <div class="text-4xl font-bold mb-2 text-gray-900">500+</div>
+            <div class="text-lg">Satisfied Clients</div>
+          </div>
+          <div class="p-6">
+            <div class="text-4xl font-bold mb-2 text-gray-900">20+</div>
+            <div class="text-lg">Years Experience</div>
+          </div>
+          <div class="p-6">
+            <div class="text-4xl font-bold mb-2 text-gray-900">50+</div>
+            <div class="text-lg">Professional Awards</div>
+          </div>
+          <div class="p-6">
+            <div class="text-4xl font-bold mb-2 text-gray-900">24/7</div>
+            <div class="text-lg">Client Support</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <span
+            class="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full"
+            >Our Team</span
+          >
+          <h2 class="text-4xl font-bold mt-4 mb-4">
+            Meet Our Accounting Experts
+          </h2>
+          <p
+            class="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto"
+          >
+            Dedicated professionals committed to your financial success.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Team Member 1 -->
+          <div class="team-card group">
+            <div class="w-32 h-32 rounded-full mx-auto mb-6 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                alt="Jean Dupont"
+              />
+            </div>
+            <h3 class="text-xl font-bold">Jean Dupont</h3>
+            <p class="text-primary text-sm font-medium mb-4">Founder & CEO</p>
+            <p class="text-slate-600 dark:text-slate-300 mb-4">
+              With 25+ years in accounting, Jean leads our firm with expertise
+              and vision.
+            </p>
+            <div class="flex justify-center space-x-4">
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="team-card group">
+            <div class="w-32 h-32 rounded-full mx-auto mb-6 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                alt="Marie Leclerc"
+              />
+            </div>
+            <h3 class="text-xl font-bold">Marie Leclerc</h3>
+            <p class="text-primary text-sm font-medium mb-4">Tax Director</p>
+            <p class="text-slate-600 dark:text-slate-300 mb-4">
+              Specializing in international tax law with 15 years of experience.
+            </p>
+            <div class="flex justify-center space-x-4">
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="team-card group">
+            <div class="w-32 h-32 rounded-full mx-auto mb-6 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                alt="Thomas Martin"
+              />
+            </div>
+            <h3 class="text-xl font-bold">Thomas Martin</h3>
+            <p class="text-primary text-sm font-medium mb-4">Audit Partner</p>
+            <p class="text-slate-600 dark:text-slate-300 mb-4">
+              Brings meticulous attention to detail to our audit services.
+            </p>
+            <div class="flex justify-center space-x-4">
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Team Member 4 -->
+          <div class="team-card group">
+            <div class="w-32 h-32 rounded-full mx-auto mb-6 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                alt="Sophie Bernard"
+              />
+            </div>
+            <h3 class="text-xl font-bold">Sophie Bernard</h3>
+            <p class="text-primary text-sm font-medium mb-4">
+              Financial Consultant
+            </p>
+            <p class="text-slate-600 dark:text-slate-300 mb-4">
+              Helps clients develop strategies for business growth and financial
+              health.
+            </p>
+            <div class="flex justify-center space-x-4">
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="#"
+                class="text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary"
+              >
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-slate-100 dark:bg-slate-800">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+          <span
+            class="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full"
+            >Testimonials</span
+          >
+          <h2 class="text-4xl font-bold mt-4 mb-4">What Our Clients Say</h2>
+          <p
+            class="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto"
+          >
+            Don't just take our word for it - hear from our satisfied clients.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card">
+            <div class="flex items-center mb-6">
+              <div class="flex-shrink-0">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
+                  class="w-12 h-12 rounded-full"
+                  alt="Sarah Johnson"
+                />
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-bold">Sarah Johnson</h4>
+                <p class="text-primary text-sm">CEO, TechSolutions</p>
+              </div>
+            </div>
+            <p class="text-slate-600 dark:text-slate-300 italic mb-4">
+              "ExpertComptable transformed our financial operations. Their
+              strategic tax planning saved us over $120,000 last year alone."
+            </p>
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card">
+            <div class="flex items-center mb-6">
+              <div class="flex-shrink-0">
+                <img
+                  src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
+                  class="w-12 h-12 rounded-full"
+                  alt="Michael Chen"
+                />
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-bold">Michael Chen</h4>
+                <p class="text-primary text-sm">Founder, GreenEnergy</p>
+              </div>
+            </div>
+            <p class="text-slate-600 dark:text-slate-300 italic mb-4">
+              "The financial insights provided have been invaluable for our
+              growth strategy. They're more than accountants - they're true
+              business partners."
+            </p>
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card">
+            <div class="flex items-center mb-6">
+              <div class="flex-shrink-0">
+                <img
+                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80"
+                  class="w-12 h-12 rounded-full"
+                  alt="Emma Rodriguez"
+                />
+              </div>
+              <div class="ml-4">
+                <h4 class="text-lg font-bold">Emma Rodriguez</h4>
+                <p class="text-primary text-sm">Director, CreativeAgency</p>
+              </div>
+            </div>
+            <p class="text-slate-600 dark:text-slate-300 italic mb-4">
+              "Professional, responsive, and always ahead of deadlines. Our
+              go-to accounting partner for years. Highly recommend their
+              services!"
+            </p>
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row">
+          <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+            <span
+              class="text-sm font-medium text-primary bg-primary/10 px-4 py-1.5 rounded-full"
+              >Contact Us</span
+            >
+            <h2 class="text-4xl font-bold mt-4 mb-6">Get In Touch</h2>
+            <p class="text-xl text-slate-600 dark:text-slate-300 mb-8">
+              Ready to take your financial management to the next level? Contact
+              us today for a free consultation.
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center"
+                  >
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-bold">Our Office</h3>
+                  <p class="text-slate-600 dark:text-slate-300 mt-1">
+                    123 Financial District, Paris, France 75001
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center"
+                  >
+                    <i class="fas fa-phone-alt"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-bold">Phone</h3>
+                  <p class="text-slate-600 dark:text-slate-300 mt-1">
+                    +33 1 23 45 67 89
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div class="flex-shrink-0">
+                  <div
+                    class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center"
+                  >
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h3 class="text-lg font-bold">Email</h3>
+                  <p class="text-slate-600 dark:text-slate-300 mt-1">
+                    contact@expertcomptable.com
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-12">
+              <h3 class="text-lg font-bold mb-4">Follow Us</h3>
+              <div class="flex space-x-4">
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-all duration-300"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-all duration-300"
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-all duration-300"
+                >
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary hover:text-white transition-all duration-300"
+                >
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:w-1/2">
+            <form class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    id="name"
+                    class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-slate-700 dark:text-white"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-slate-700 dark:text-white"
+                  />
+                </div>
+              </div>
+              <div class="mt-6">
+                <label
+                  for="subject"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="subject"
+                  class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-slate-700 dark:text-white"
+                />
+              </div>
+              <div class="mt-6">
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                  >Message</label
+                >
+                <textarea
+                  id="message"
+                  rows="5"
+                  class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-slate-700 dark:text-white"
+                ></textarea>
+              </div>
+              <div class="mt-8">
+                <button type="submit" class="btn-primary w-full">
+                  Send Message <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+          <div>
+            <a href="#" class="flex items-center space-x-2 mb-6">
+              <div
+                class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white"
+              >
+                <i class="fas fa-calculator"></i>
+              </div>
+              <span class="text-xl font-bold text-white">ExpertComptable</span>
+            </a>
+            <p class="mb-4">
+              Professional accounting services to help your business grow while
+              ensuring compliance and financial health.
+            </p>
+            <div class="flex space-x-4">
+              <a href="#" class="text-slate-400 hover:text-white">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="text-slate-400 hover:text-white">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="text-slate-400 hover:text-white">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="text-slate-400 hover:text-white">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-4">Services</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="hover:text-white">Accounting Services</a>
+              </li>
+              <li><a href="#" class="hover:text-white">Tax Planning</a></li>
+              <li>
+                <a href="#" class="hover:text-white">Audit & Assurance</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white">Financial Consulting</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white">Wealth Management</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-4">Company</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:text-white">About Us</a></li>
+              <li><a href="#" class="hover:text-white">Our Team</a></li>
+              <li><a href="#" class="hover:text-white">Careers</a></li>
+              <li><a href="#" class="hover:text-white">Blog</a></li>
+              <li><a href="#" class="hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-4">Newsletter</h3>
+            <p class="mb-4">
+              Subscribe to our newsletter for financial tips and updates.
+            </p>
+            <form class="flex">
+              <input
+                type="email"
+                placeholder="Your email"
+                class="px-4 py-2 rounded-l-lg w-full bg-gray-100/90 text-black focus:outline-none focus:black lg:pt-[120px]"
+              />
+              <button
+                type="submit"
+                class="bg-primary text-white px-4 py-2 rounded-r-lg hover:bg-primary-dark"
+              >
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="mb-4 md:mb-0">
+            &copy; 2025 ExpertComptable. All rights reserved.
+          </p>
+          <div class="flex space-x-6">
+            <a href="#" class="hover:text-white">Privacy Policy</a>
+            <a href="#" class="hover:text-white">Terms of Service</a>
+            <a href="#" class="hover:text-white">Cookies</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Theme toggle functionality
+      const themeToggle = document.getElementById("themeToggle");
+      const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+      const html = document.documentElement;
+
+      // Check for saved user preference, if any
+      const currentTheme = localStorage.getItem("theme") || "light";
+      if (currentTheme === "dark") {
+        html.classList.add("dark");
+      }
+
+      // Toggle theme
+      function toggleTheme() {
+        html.classList.toggle("dark");
+        const theme = html.classList.contains("dark") ? "dark" : "light";
+        localStorage.setItem("theme", theme);
+      }
+
+      themeToggle.addEventListener("click", toggleTheme);
+      if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener("click", toggleTheme);
+      }
+
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            // Close mobile menu if open
+            if (!mobileMenu.classList.contains("hidden")) {
+              mobileMenu.classList.add("hidden");
+            }
+
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Add shadow to navbar on scroll
+      window.addEventListener("scroll", () => {
+        const nav = document.querySelector("nav");
+        if (window.scrollY > 10) {
+          nav.classList.add("shadow-md");
+        } else {
+          nav.classList.remove("shadow-md");
+        }
+      });
+    </script>
+  </body>
+</html>
